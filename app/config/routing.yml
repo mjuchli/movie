@@ -1,0 +1,8 @@
+movie_wall_api:
+    resource: "@MovieWallApiBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
