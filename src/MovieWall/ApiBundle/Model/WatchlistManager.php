@@ -7,6 +7,7 @@ class WatchlistManager implements WatchlistInterface, MovieableInterface {
     protected $class;
     protected $repository;
 
+
     public function getMovie($movie)
     {
         // TODO: Implement getMovie() method.

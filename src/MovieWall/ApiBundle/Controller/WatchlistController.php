@@ -8,6 +8,8 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use MovieWall\ApiBundle\Model\WatchlistManager;
+use MovieWall\ApiBundle\Document\Movie;
 
 /**
  * Class WatchlistController
@@ -32,7 +34,9 @@ class WatchlistController extends Controller
      */
     public function allAction()
     {
-        return new Response();
+        $movies = WatchlistManager::findMovies();
+
+        return array('movies' => $movies);
     }
 
     /**
@@ -49,6 +53,12 @@ class WatchlistController extends Controller
      */
     public function getAction($id)
     {
-        return new Response();
+        $movie = WatchlistManager::getMovie($id);
+
+        if(!$movie instanceof Movie){
+            throw new NotFoundHttpException('Movie not found');
+        }
+
+        return array('movie' => $movie);
     }
 }
